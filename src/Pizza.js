@@ -80,7 +80,7 @@ function Pizza(props) {
                     />
                 </label>
                 <br />
-                <button>Add to Order</button>
+                <button id='submit'>Add to Order</button>
             </form>
         </div>
     )

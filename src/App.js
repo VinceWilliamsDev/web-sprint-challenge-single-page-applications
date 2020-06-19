@@ -74,6 +74,8 @@ const App = () => {
       .catch(err => {
         console.log(err)
       })
+    
+    setFormValues(initialFormValues)
 }
 
   return (
