@@ -1,31 +1,11 @@
 import React from 'react'
 
+
 function Pizza(props) {
-    //initial values for the form fields
-    const formValues = {
-        name: '',
-        size: '',
-        pepperoni: false,
-        sausage: false,
-        mushrooms: false,
-        olives: false,
-        instructions: ''
+
+    const {formValues, onSubmit, onChange, onChangeCheckbox, errors, onNameChange} = props
 
 
-    }
-
-    const onSubmit = () => {
-        //TODO create onSubmit handler
-        return null
-    }
-
-    const onChange = () => {
-        //TODO create state change handler
-    }
-
-    const onChangeCheckbox = () => {
-        // TODO create state change handler for checkboxes
-    }
 
     return (
         <div>
@@ -35,14 +15,14 @@ function Pizza(props) {
                     <input
                         type='text'
                         name='name'
-                        onChange={onChange}
+                        onChange={onNameChange}
                         value={formValues.name}
                     />
+                    {errors.name.length > 0 ? (<p>{errors.name}</p>) : null}
                 </label>
-
+                <br />
                 <label>Select a Size&nbsp;
                     <select
-                        // type='dropdown'
                         name='size'
                         value={formValues.size}
                         onChange={onChange}
@@ -53,6 +33,7 @@ function Pizza(props) {
                         <option value='large'>Large</option>
                     </select>
                 </label>
+                <br />
                 <h4>Select Your Toppings</h4>
                 <label>Pepperoni
                     <input 
@@ -62,16 +43,16 @@ function Pizza(props) {
                         checked={formValues.pepperoni}
                     />
                 </label>
-
+                <br />
                 <label>Sausage
                     <input 
-                        name='suasage'
+                        name='sausage'
                         type='checkbox'
                         onChange={onChangeCheckbox}
                         checked={formValues.sausage}
                     />
                 </label>
-
+                <br />
                 <label>Mushrooms
                     <input 
                         name='mushrooms'
@@ -80,7 +61,7 @@ function Pizza(props) {
                         checked={formValues.mushrooms}
                     />
                 </label>
-
+                <br />
                 <label>Black Olives
                     <input 
                         name='olives'
@@ -89,11 +70,17 @@ function Pizza(props) {
                         checked={formValues.olives}
                     />
                 </label>
-
-                <label>Special Instructions:
-                    <textarea value={formValues.instructions} onChange={onChange} />
+                <br />
+                <label>Special Instructions&nbsp;
+                    <input
+                        type='text'
+                        name='instructions'
+                        onChange={onChange}
+                        value={formValues.instructions}
+                    />
                 </label>
-                <button>Submit</button>
+                <br />
+                <button>Add to Order</button>
             </form>
         </div>
     )
