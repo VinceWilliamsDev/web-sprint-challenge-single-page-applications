@@ -1,12 +1,23 @@
-import React from "react";
-import Form from './Form'
-import Home from './Home'
+import React, { useState } from "react";
 import Pizza from './Pizza.js'
+import Home from './Home.js'
+import Confirmation from './Confirmation.js'
 import {Route, Switch, Link} from 'react-router-dom'
 
 const App = () => {
 
+    //initial values for the form fields
+    const initialFormValues = {
+      name: '',
+      size: '',
+      pepperoni: false,
+      sausage: false,
+      mushrooms: false,
+      olives: false,
+      instructions: ''
+  }
 
+  const [formValues, setFormValues] = useState(initialFormValues)
 
   return (
     <div>
@@ -16,11 +27,11 @@ const App = () => {
       </header>
       <Switch>
         <Route path='/order/:id'>
-          <Pizza />
+          <Confirmation />
         </Route>
 
         <Route path ='/order'>
-          <Form />
+          <Pizza />
         </Route>
 
         <Route path='/'>
